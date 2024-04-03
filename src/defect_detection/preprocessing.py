@@ -110,7 +110,7 @@ def generate_dataset(
         print(param, file=f)
     
     print('Preprocessing parameters :')
-    for k, i in param.items()
+    for k, i in param.items():
         print(f'\t{k} : {i}')
     
     # Load initial croping if needed
@@ -227,7 +227,7 @@ def get_tensor(im, dev='auto'):
             Support 'CPU', 'cuda' and 'auto'.
     '''
     # Device automatic selection (if needed)
-    if dev = 'auto':
+    if dev == 'auto':
         # Check for CUDA availability
         if cuda_check:
             dev = 'cuda'

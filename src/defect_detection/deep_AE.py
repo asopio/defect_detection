@@ -21,13 +21,13 @@ class AE_cls(torch.nn.Module):
     '''
     
     # Initialization method
-    def __init__(self, p, apply_only=False loss_fn=None, opt=None, opt_param=None):
+    def __init__(self, p, apply_only=False, loss_fn=None, opt=None, opt_param=None):
         '''
         Arguments :
             p : dict()
                 Python dict containing all the information about the AE architecture.
             
-            apply_only : (boolean)
+            apply_only : (bool)
                 Specify if the model is used only for application (default: False).
                 Note that the training method is not usable if set to True.
             
@@ -132,6 +132,30 @@ class AE_cls(torch.nn.Module):
         
         return
     
+    # Device selection method (includes automatic selection)
+    def to_dev(self, dev):
+        '''
+        Select the device torch should use for this model.
+        Supports automatic selection.
+        
+        Arguments :
+            dev : (str)
+                Specify the device to use for this model.
+                Supported values are 'cuda', 'cpu' and 'auto'.
+        '''
+        # Check if auto
+        if dev=='auto':
+            # Check if cuda is available
+            if torch.cuda.is_available():
+                dev = 'cuda'
+            else:
+                dev = 'cpu'
+        
+        # Set device
+        self.to(dev)
+        
+        return
+    
     # Forward pass method (internal use only)
     def forward(self, x):
         '''
@@ -223,11 +247,11 @@ class AE_cls(torch.nn.Module):
             os.mkdir(path, 0o755)
         
         # Save config in text file
-        with open(path + 'config.txt', 'w') as f:
+        with open(path + 'AE_config.txt', 'w') as f:
             print(self.config, file=f)
         
         # Save state_dict
-        torch.save(self.state_dict(), path + 'state.save')
+        torch.save(self.state_dict(), path + 'AE_state.save')
         
         return
     
