@@ -7,7 +7,7 @@
 
 import numpy as np
 import cv2 as cv
-from torch.cuda import is_available as cuda_check
+import torch
 import os
 import sys
 import getopt
@@ -229,7 +229,7 @@ def get_tensor(im, dev='auto'):
     # Device automatic selection (if needed)
     if dev == 'auto':
         # Check for CUDA availability
-        if cuda_check:
+        if torch.cuda.is_available():
             dev = 'cuda'
         else:
             dev = 'cpu'
