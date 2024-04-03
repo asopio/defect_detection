@@ -36,15 +36,15 @@ def get_pixels(emap, th, dbs_param, pix_th):
         lab, count = np.unique(fil, return_counts=True)
         lab = lab[1:]
         count = count[1:]
-        pix2 = pix[np.isin(fil, lab[count >= pix_th])] #FIXME store and return both raw and clean list for testing
+        pix = pix[np.isin(fil, lab[count >= pix_th])]
         del lab
         del count
     else:
         # Only filter out noisy labels
-        pix2 = pix[fil > -1] #FIXME store and return both raw and clean list for testing
+        pix = pix[fil > -1]
     
     # Return the filtered pixel list
-    return pix, pix2
+    return pix
 
 
 
