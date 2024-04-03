@@ -8,11 +8,11 @@ from .deep_AE import AE_cls
 
 # Error map using mean
 def emap_mean(x, y):
-    return torch.mean(torch.square(x - y), (0))
+    return torch.mean(torch.square(x - y), (0)).detach().to('cpu').numpy()
 
 # Error map using sum
 def emap_sum(x, y):
-    return torch.mean(torch.square(x - y), (0))
+    return torch.sum(torch.square(x - y), (0)).detach().to('cpu').numpy()
 
 # Load a trained model
 def deepAE_load(path, use_only=True, loss_fn=None, opt=None, opt_param=None):
