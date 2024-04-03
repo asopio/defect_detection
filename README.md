@@ -1,5 +1,8 @@
 # defect_detection
 
+[![PyPI](https://img.shields.io/pypi/v/defect_detection)](https://pypi.org/project/defect_detection/)
+[![Build](https://github.com/lovaslin/defect_detection/workflows/cd.yml/badge.svg)](https://github.com/lovaslin/defect_detection/actions)
+
 This packge provides a basic API to implement defect detection algorithms. 
 These algorithms can be tune in order to automatically detect any defect in a PCB or other components.
 
