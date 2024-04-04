@@ -50,3 +50,7 @@ classifiers = [
 "Bug Tracker" = "https://github.com/lovaslin/defect_detection/issues"
 "Source" = "https://github.com/lovaslin/defect_detection"
 
+[flake8]
+max-complexity = 12
+extend-ignore = ["E203", "E266", "E402", "E501", "C901"]
+extend-select = ["B", "B9"]
