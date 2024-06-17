@@ -51,6 +51,9 @@ def deepAE_load(path, use_only=True, loss_fn=None, opt=None, opt_param=None):
     ae = AE_cls(param, use_only, loss_fn, opt, opt_param)
 
     # Load trained parameters
-    ae.load_state_dict(torch.load(path + "AE_state.save"))
+    if torch.cuda.is_available():
+        ae.load_state_dict(torch.load(path + "AE_state.save"))
+    else:
+        ae.load_state_dict(torch.load(path + "AE_state.save", map_location='cpu'))
 
     return ae
