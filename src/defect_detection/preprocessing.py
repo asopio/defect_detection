@@ -9,6 +9,7 @@ import numpy as np
 import cv2 as cv
 import torch
 import os
+from pathlib import Path
 import concurrent.futures as thd
 
 
@@ -103,7 +104,7 @@ def generate_dataset(
         "Ncore": Ncore,
         "seed": seed,
     }
-    with open(param["opath"] + param["name"] + ".txt", "w") as f:
+    with Path.open(Path(param["opath"] + param["name"] + ".txt"), "w") as f:
         print(param, file=f)
 
     print("Preprocessing parameters :")
@@ -112,7 +113,7 @@ def generate_dataset(
 
     # Load initial croping if needed
     if param["fcrop"] is not None:
-        with open(param["fcrop"]) as f:
+        with Path.open(Path(param["fcrop"]), "r") as f:
             cr = eval(f.read())
     else:
         cr = None
@@ -124,7 +125,7 @@ def generate_dataset(
 
     # Get the image list from file
     fl = []
-    with open(param["Flist"]) as f:
+    with Path.open(Path(param["Flist"])) as f:
         for li in f.readlines():
             if li[0] == "#":
                 continue

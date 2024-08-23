@@ -4,6 +4,7 @@
 
 import torch
 from .deep_AE import AE_cls
+from pathlib import Path
 
 
 # Error map using mean
@@ -44,7 +45,7 @@ def deepAE_load(path, use_only=True, loss_fn=None, opt=None, opt_param=None):
             If None, a empty dict is assumed.
     """
     # Load the model hyperparameter
-    with open(path + "AE_config.txt") as f:
+    with Path.open(Path(path + "AE_config.txt")) as f:
         param = eval(f.read())
 
     # Initilize the model

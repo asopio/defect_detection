@@ -22,7 +22,7 @@ readme = "README.md"
 license = { file="LICENSE" }
 requires-python = ">=3.7"
 dependencies = [
-    "opencv-python",
+    "opencv-python-headless",
     "numpy",
     "torch",
     "scikit-learn",
