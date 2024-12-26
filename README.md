@@ -1,4 +1,16 @@
-# defect_detection
+# Fork of defect_detection by Louis Vaslin
+
+Models for ITk PCB anomaly detection. 
+
+Ideas for improvements:
+- Retrain on NCAB/Tecnomec PCBs (this will almost certainly be necessary judging by the model performance out-of-the box)
+- Try training AD on image differences with golden module. This might remove the need to retrain for every manufacturer. 
+- Variational Autoencoder: this should give better performance, better generalisation. Interesting idea: can poll multiple times during inference to get an uncertainty on the anomaly score.
+- Compare inference times between AE & VAE
+- Construct a labelled evaluation dataset
+- Transformer encoder to identify and classify/label defects    
+
+--- 
 
 [![PyPI](https://img.shields.io/pypi/v/defect_detection)](https://pypi.org/project/defect_detection/)
 [![Build](https://github.com/lovaslin/defect_detection/actions/workflows/cd.yml/badge.svg)](https://github.com/lovaslin/defect_detection/actions)
